@@ -4,19 +4,12 @@
  * @copyright 2012, Cloud9 IDE, Inc.
  * @license GPLv3 <http://www.gnu.org/licenses/gpl.txt>
  */
-
- /**
- * Undo Module for the Cloud9 IDE
- *
- * @copyright 2010, Ajax.org B.V.
- * @license GPLv3 <http://www.gnu.org/licenses/gpl.txt>
- */
 "use strict";
 define(function(require, exports, module) {
     main.consumes = [
         "plugin", "tabs", "settings", "preferences"
     ];
-    main.provides = ["undo"];
+    main.provides = ["closeconfirmation"];
     return main;
 
     function main(options, imports, register) {
@@ -63,6 +56,7 @@ define(function(require, exports, module) {
         }
 
         /***** Methods *****/
+
         function onBeforeUnloadHandler() {
             var changed = false;
             tabs.getPages().forEach(function(page){
@@ -81,6 +75,7 @@ define(function(require, exports, module) {
         }
 
         /***** Lifecycle *****/
+
         plugin.on("load", function(){
             load();
         });
@@ -97,14 +92,11 @@ define(function(require, exports, module) {
 
         /***** Register and define API *****/
 
-        /**
-         * Finder implementation using nak
-         **/
         plugin.freezePublicAPI({
         });
 
         register(null, {
-            undo: plugin
+            closeconfirmation: plugin
         });
     }
 });
