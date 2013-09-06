@@ -63,7 +63,7 @@ define(function(require, exports, module) {
                 changed = changed || (page.document.value && page.document.changed);
             });
 
-            emit("exit", {changed: changed});
+            emit("exit", { changed: changed });
 
             if (changed)
                 return "You have unsaved changes. Your changes will be lost if you don't save them";
