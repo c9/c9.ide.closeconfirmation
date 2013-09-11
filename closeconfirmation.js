@@ -59,7 +59,7 @@ define(function(require, exports, module) {
 
         function onBeforeUnloadHandler() {
             var changed = false;
-            tabs.getPages().forEach(function(tab){
+            tabs.getTabs().forEach(function(tab){
                 changed = changed || (tab.document.value && tab.document.changed);
             });
 
