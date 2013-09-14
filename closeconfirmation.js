@@ -7,13 +7,13 @@
 "use strict";
 define(function(require, exports, module) {
     main.consumes = [
-        "plugin", "tabManager", "settings", "preferences"
+        "Plugin", "tabManager", "settings", "preferences"
     ];
     main.provides = ["closeconfirmation"];
     return main;
 
     function main(options, imports, register) {
-        var Plugin      = imports.plugin;
+        var Plugin      = imports.Plugin;
         var tabs        = imports.tabManager;
         var settings    = imports.settings;
         var prefs       = imports.preferences;
