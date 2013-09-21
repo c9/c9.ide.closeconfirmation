@@ -7,14 +7,14 @@
 "use strict";
 define(function(require, exports, module) {
     main.consumes = [
-        "plugin", "tabs", "settings", "preferences"
+        "Plugin", "tabManager", "settings", "preferences"
     ];
     main.provides = ["closeconfirmation"];
     return main;
 
     function main(options, imports, register) {
-        var Plugin      = imports.plugin;
-        var tabs        = imports.tabs;
+        var Plugin      = imports.Plugin;
+        var tabs        = imports.tabManager;
         var settings    = imports.settings;
         var prefs       = imports.preferences;
 
@@ -59,8 +59,8 @@ define(function(require, exports, module) {
 
         function onBeforeUnloadHandler() {
             var changed = false;
-            tabs.getPages().forEach(function(page){
-                changed = changed || (page.document.value && page.document.changed);
+            tabs.getTabs().forEach(function(tab){
+                changed = changed || (tab.document.value && tab.document.changed);
             });
 
             emit("exit", { changed: changed });
