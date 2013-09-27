@@ -1,11 +1,6 @@
-/**
- * This plugin gives a 'close confirmation' when closing the IDE
- * @author Mostafa Eweda <mostafa@c9.io>
- * @copyright 2012, Cloud9 IDE, Inc.
- * @license GPLv3 <http://www.gnu.org/licenses/gpl.txt>
- */
-"use strict";
 define(function(require, exports, module) {
+    "use strict";
+    
     main.consumes = [
         "Plugin", "tabManager", "settings", "preferences"
     ];
@@ -93,6 +88,7 @@ define(function(require, exports, module) {
         /***** Register and define API *****/
         /**
          * Shows a 'close confirmation' popup when closing the IDE
+         * @singleton
          */
         plugin.freezePublicAPI({
         });
