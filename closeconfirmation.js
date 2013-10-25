@@ -53,9 +53,8 @@ define(function(require, exports, module) {
         /***** Methods *****/
 
         function onBeforeUnloadHandler() {
-            var changed = false;
-            tabs.getTabs().forEach(function(tab){
-                changed = changed || (tab.document.value && tab.document.changed);
+            var changed = tabs.getTabs().some(function(tab){
+                return tab.document.value && tab.document.changed;
             });
 
             emit("exit", { changed: changed });
