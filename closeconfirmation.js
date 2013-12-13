@@ -25,6 +25,7 @@ define(function(require, exports, module) {
 
             // when unloading the window
             window.onbeforeunload = onBeforeUnloadHandler;
+            window.onunload = unload;
             
             settings.on("read", function(){
                 settings.setDefaults("user/general", [
