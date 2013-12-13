@@ -25,7 +25,6 @@ define(function(require, exports, module) {
 
             // when unloading the window
             window.onbeforeunload = onBeforeUnloadHandler;
-            window.onunload = unload;
             
             settings.on("read", function(){
                 settings.setDefaults("user/general", [
@@ -60,13 +59,14 @@ define(function(require, exports, module) {
 
             emit("exit", { changed: changed });
 
-            if (changed)
-                return "You have unsaved changes. Your changes will be lost if you don't save them";
-
             // see what's in the settings
             var confirmExit = settings.getBool("user/general/@confirmexit");
-            if (confirmExit)
-                return "You're about to leave Cloud9 IDE.";
+            if (confirmExit) {
+                if (changed)
+                    return "You have unsaved changes. Your changes will be lost if you don't save them";
+                else
+                    return "You're about to leave Cloud9 IDE.";
+            }
         }
 
         /***** Lifecycle *****/
