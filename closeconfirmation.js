@@ -17,6 +17,8 @@ define(function(require, exports, module) {
 
         var plugin = new Plugin("Ajax.org", main.consumes);
         var emit   = plugin.getEmitter();
+        
+        var defaultValue = options.defaultValue;
 
         var loaded = false;
         function load(callback){
@@ -28,7 +30,7 @@ define(function(require, exports, module) {
             
             settings.on("read", function(){
                 settings.setDefaults("user/general", [
-                    ["confirmexit", "false"]
+                    ["confirmexit", defaultValue]
                 ]);
             }, plugin);
 
