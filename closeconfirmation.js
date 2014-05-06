@@ -8,22 +8,22 @@ define(function(require, exports, module) {
     return main;
 
     function main(options, imports, register) {
-        var Plugin      = imports.Plugin;
-        var tabs        = imports.tabManager;
-        var settings    = imports.settings;
-        var prefs       = imports.preferences;
-        var auth        = imports.auth;
+        var Plugin = imports.Plugin;
+        var tabs = imports.tabManager;
+        var settings = imports.settings;
+        var prefs = imports.preferences;
+        var auth = imports.auth;
 
         /***** Initialization *****/
 
         var plugin = new Plugin("Ajax.org", main.consumes);
-        var emit   = plugin.getEmitter();
+        var emit = plugin.getEmitter();
         
         var defaultValue = options.defaultValue;
         var loggingIn = false;
 
         var loaded = false;
-        function load(callback){
+        function load(callback) {
             if (loaded) return false;
             loaded = true;
 
@@ -48,9 +48,9 @@ define(function(require, exports, module) {
                 "General" : {
                     "General" : {
                         "Warn Before Exiting" : {
-                            type     : "checkbox",
-                            position : 8000,
-                            path     : "user/general/@confirmexit"
+                            type: "checkbox",
+                            position: 8000,
+                            path: "user/general/@confirmexit"
                         }
                     }
                 }
@@ -65,7 +65,7 @@ define(function(require, exports, module) {
         /***** Methods *****/
 
         function onBeforeUnloadHandler() {
-            var changed = tabs.getTabs().some(function(tab){
+            var changed = tabs.getTabs().some(function(tab) {
                 return tab.document.value && tab.document.changed;
             });
 
