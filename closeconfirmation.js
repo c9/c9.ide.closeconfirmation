@@ -20,6 +20,7 @@ define(function(require, exports, module) {
         var emit = plugin.getEmitter();
         
         var defaultValue = options.defaultValue;
+        var loggingIn = false;
 
         var loaded = false;
         function load(callback) {
@@ -34,6 +35,14 @@ define(function(require, exports, module) {
                     ["confirmexit", defaultValue]
                 ]);
             }, plugin);
+            
+            auth.on("loggingin", function() {
+                loggingIn = true;
+            });
+            
+            auth.on("login", function() {
+                loggingIn = false;
+            });
 
             prefs.add({
                 "General" : {
@@ -63,7 +72,7 @@ define(function(require, exports, module) {
             emit("exit", { changed: changed });
 
             // see what's in the settings
-            var confirmExit = settings.getBool("user/general/@confirmexit") && auth.loggedIn;
+            var confirmExit = settings.getBool("user/general/@confirmexit") && !loggingIn;
             if (confirmExit) {
                 if (changed)
                     return "You have unsaved changes. Your changes will be lost if you don't save them";
