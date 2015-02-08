@@ -9,14 +9,12 @@
         "url": "http://github.com/c9/c9.ide.closeconfirmation.git"
     },
     "plugins": {
-        "plugin": {
-            "closeconfirmation": {}
-        }
+        "closeconfirmation": {}
     },
     "categories": [
         "core"
     ],
     "licenses": [
-        ""
+        "MIT"
     ]
 }
