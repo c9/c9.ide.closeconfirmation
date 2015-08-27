@@ -13,6 +13,7 @@ define(function(require, exports, module) {
         var settings = imports.settings;
         var prefs = imports.preferences;
         var auth = imports.auth;
+        var ideProviderName = options.ideProviderName || "Cloud9";
 
         /***** Initialization *****/
 
@@ -68,7 +69,7 @@ define(function(require, exports, module) {
                 if (changed)
                     return "You have unsaved changes. Your changes will be lost if you don't save them";
                 else
-                    return "You're about to leave Cloud9.";
+                    return "You're about to leave " + ideProviderName + ".";
             }
         }
 
