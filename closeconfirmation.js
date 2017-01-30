@@ -30,16 +30,16 @@ define(function(require, exports, module) {
             // when unloading the window
             window.onbeforeunload = onBeforeUnloadHandler;
             
-            settings.on("read", function(){
+            settings.on("read", function() {
                 settings.setDefaults("user/general", [
                     ["confirmexit", defaultValue]
                 ]);
             }, plugin);
 
             prefs.add({
-                "General" : {
-                    "General" : {
-                        "Warn Before Exiting" : {
+                "General": {
+                    "General": {
+                        "Warn Before Exiting": {
                             type: "checkbox",
                             position: 8000,
                             path: "user/general/@confirmexit"
@@ -75,16 +75,16 @@ define(function(require, exports, module) {
 
         /***** Lifecycle *****/
 
-        plugin.on("load", function(){
+        plugin.on("load", function() {
             load();
         });
-        plugin.on("enable", function(){
+        plugin.on("enable", function() {
 
         });
-        plugin.on("disable", function(){
+        plugin.on("disable", function() {
 
         });
-        plugin.on("unload", function(){
+        plugin.on("unload", function() {
             unload();
             loaded = false;
         });
